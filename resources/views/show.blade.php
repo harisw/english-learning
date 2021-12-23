@@ -46,16 +46,35 @@
                             ></iframe>
                         </div>
                         <div class="col-lg-4 px-0">
-                            <section class="bg-light" style="display: block; height: 260px;">
-                                <div class="container overflow-auto" id="rightAnswer">
+                            <div class="card">
+                                <div class="card-body overflow-auto bg-light" style="height: 270px;">
+                                    <h4 class="card-title">Answer #<span class="question-number">1</span></h5>
+                                    <h5 id="rightAnswer"></h5>
+                                    <div class="overflow-auto" id="rightAnswer">
+                                        
+                                    </div>
 
                                 </div>
-                            </section>
-                            <section class="bg-secondary" style="display: block; height: 260px;">
-                                <div class="container overflow-auto" id="optionAnswer" style="overflow-y: auto">
+                            </div>
+                            <div class="card">
+                                <div class="card-body overflow-auto bg-secondary" style="height: 270px;">
+                                    <h4 class="card-title">Options #<span class="question-number">1</span></h5>
+                                    <div class="overflow-auto" id="optionAnswer">
+                                        
+                                    </div>
 
                                 </div>
-                            </section>
+                            </div>
+<!--                             <div class="card-body overflow-auto bg-dark" style="height: 270px;">
+                                <h5 class="card-title">Card title</h5>
+                                <div class="overflow-auto" id="rightAnswer">
+                                    
+                                </div>
+
+                            </div> -->
+<!--                             <div class="container overflow-auto bg-dark" id="optionAnswer" style="overflow-y: auto; height: 270px;">
+
+                            </div> -->
                         </div>
                         <div class="col-lg-8"></div>
                         <div class="col-lg-2">
@@ -102,7 +121,8 @@
                 if(index == currentIndex){
                 //if($(this).text() == answers[questionNum][currentIndex]){
                     console.log("benar");
-                    $("#rightAnswer").append(`<button class="btn btn-md btn-primary mx-2 my-2">${$(this).text()}</button>`);
+                    $("#rightAnswer").text($("#rightAnswer").text() + " " + $(this).text());
+                    //$("#rightAnswer").append(`<button class="btn btn-md btn-primary mx-2 my-2">${$(this).text()}</button>`);
                     currentIndex++;
                     $(this).remove();
                     if(currentIndex == answers[questionNum].length){
@@ -115,6 +135,7 @@
                           "Let's go to the next question",
                           'success'
                         )
+                        $(".question-number").text(questionNum+1);
                     }
                 } else {
                     Swal.fire(
@@ -130,6 +151,7 @@
                 questionNum++;
                 loadQuestion();
                 currentIndex = 0;
+                $(".question-number").text(questionNum+1);
              });
               $(document).on('click', '.btn-reveal', function(){
                 Swal.fire(`<sm>${questions[questionNum]}</sm>`);
