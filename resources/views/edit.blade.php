@@ -61,7 +61,7 @@
                         <div class="col-lg-6">
                             <iframe id="existing-iframe-example"
                                     width="640" height="360"
-                                    src="https://youtube.com/embed/Yh6RYRrsaVs?enablejsapi=1"
+                                    src="{{$video->link}}"
                                     frameborder="0"
                                     style="border: solid 2px #37474F"
                             ></iframe>
